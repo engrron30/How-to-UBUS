@@ -1,5 +1,5 @@
 # simple_ubus
-This repository aims to test communication with ubus. The developer can use this guide as to trace the message coming from a service to the ubus daemon or simply ubusd.
+This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based platform which may be inconvenient for non-OpenWRT and Ubuntu user testing. The developer can use this guide as to trace the message coming from a service to the ubus daemon or simply ubusd.
 
 **(1) Prepare dependencies.** You may skip this part depends on your machine.
 
@@ -24,10 +24,10 @@ This repository aims to test communication with ubus. The developer can use this
     make
     cd ../..
 
-**(3) Prepare your client code:**
+**(3) Prepare your service code:**
     
     mkdir my_program && cd my_program
-    vim send_msg_to_ubusd.c
+    vim hello_service.c
 
     Client Code:
         #include <libubus.h>
@@ -87,7 +87,7 @@ This repository aims to test communication with ubus. The developer can use this
 
 **(4) Compile the service source code:**
     
-    gcc -o server server.c \
+    gcc -o hello_service hello_service.c \
         -I../libubox -I../ubus \
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
