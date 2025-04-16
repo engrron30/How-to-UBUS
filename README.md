@@ -1,11 +1,13 @@
 # simple_ubus
 This repository aims to test communication with ubus. The developer can use this guide as to trace the message coming from a service to the ubus daemon or simply ubusd.
 
-(1) Prepare dependencies. You may skip this part depends on your machine.
+**(1) Prepare dependencies.** You may skip this part depends on your machine.
+
     sudo apt update
     sudo apt install -y build-essential git libjson-c-dev libblobmsg-json-dev pkg-config
 
-(2) Prepare libubox.
+**(2) Prepare libubox.**
+    
     git clone https://git.openwrt.org/project/libubox.git
     cd libubox
     mkdir build && cd build
@@ -13,7 +15,8 @@ This repository aims to test communication with ubus. The developer can use this
     make
     cd ../..
 
-(2) Prepare ubus code. This time, you are going to build ubus with libubox dependencies.
+**(2) Prepare ubus code.** This time, you are going to build ubus with libubox dependencies.
+    
     git clone https://git.openwrt.org/project/ubus.git
     cd ubus
     mkdir build && cd build
@@ -21,7 +24,8 @@ This repository aims to test communication with ubus. The developer can use this
     make
     cd ../..
 
-(3) Prepare your client code:
+**(3) Prepare your client code:**
+    
     mkdir my_program && cd my_program
     vim send_msg_to_ubusd.c
 
@@ -81,22 +85,27 @@ This repository aims to test communication with ubus. The developer can use this
             return 0;
         }
 
-(4) Compile the service source code:
+**(4) Compile the service source code:**
+    
     gcc -o server server.c \
         -I../libubox -I../ubus \
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
 
-(5) Run ubusd:
+**(5) Run ubusd:**
+    
     sudo ubusd &
 
-(6) Register hello object in ubus by running the server code.
+**(6) Register hello object in ubus by running the server code.**
+    
     sudo ./server &
 
-(7) List registered object in ubus: 	
+**(7) List registered object in ubus: **	
+    
     sudo ../ubus/build/ubus list
 
-(8) Trigger hello from ubus:		
+**(8) Trigger hello from ubus:	**	
+    
     sudo ../ubus/build/ubus call hello say
 
-(9) Be awesome!
+**(9) Be awesome!**
