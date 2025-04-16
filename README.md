@@ -98,7 +98,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
 
 **(6) Register hello object in ubus by running the server code.**
     
-    sudo ./server &
+    sudo ./hello_service &
 
 **(7) List registered object in ubus: **	
     
