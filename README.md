@@ -29,7 +29,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
     mkdir my_program && cd my_program
     vim hello_service.c
 
-    Client Code:
+    Hello Service Code:
         #include <libubus.h>
         #include <libubox/blobmsg_json.h>
         #include <stdio.h>
