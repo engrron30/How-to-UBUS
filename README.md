@@ -92,6 +92,15 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
 
+In the latest commit, this GCC command line is now automated in the Makefile in _my_program_ directory. Instead of pasting this whole line to the terminal, just run the following:
+
+    cd /my_program
+    make
+
+To remove the compiled file, just do:
+
+    make clean
+
 **(5) Run ubusd:**
     
     sudo ubusd &
