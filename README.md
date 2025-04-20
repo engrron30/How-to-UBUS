@@ -109,12 +109,12 @@ To remove the compiled file, just do:
     
     sudo ./hello_service &
 
-**(7) List registered object in ubus: **	
+(7) List registered object in ubus:
     
     sudo ../ubus/build/ubus list
 
-**(8) Trigger hello from ubus:	**	
+(8) Trigger hello from ubus:	
     
     sudo ../ubus/build/ubus call hello say
 
-**(9) Be awesome!**
+(9) Be awesome!
