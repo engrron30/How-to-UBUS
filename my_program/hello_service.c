@@ -16,6 +16,7 @@ static int hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
     return 0;
 }
 
+// TODO: Add another ubus method. Can be something that changes a value.
 // Define the methods under "hello" object
 static const struct ubus_method hello_methods[] = {
     UBUS_METHOD_NOARG("say", hello_handler),
@@ -52,4 +53,3 @@ int main() {
     ubus_free(ctx);
     return 0;
 }
-
