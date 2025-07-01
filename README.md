@@ -105,6 +105,8 @@ To remove the compiled file, just do:
     
     sudo ubusd &
 
+If you are familiar how to start ubusd in your machine or an ubusd is already running in your devixe, you can skip some steps including this one.
+
 **(6) Register hello object in ubus by running the server code.**
     
     sudo ./hello_service &
