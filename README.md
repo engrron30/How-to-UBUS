@@ -1,4 +1,5 @@
-# simple_ubus
+# UBus Learning
+
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based platform which may be inconvenient for non-OpenWRT and Ubuntu user testing. The developer can use this guide as to trace the message coming from a service to the ubus daemon or simply ubusd.
 
 **(1) Prepare dependencies.** You may skip this part depends on your machine.
@@ -105,7 +106,7 @@ To remove the compiled file, just do:
     
     sudo ubusd &
 
-If you are familiar how to start ubusd in your machine or an ubusd is already running in your devixe, you can skip some steps including this one.
+If you are familiar how to start ubusd in your machine or an ubusd is already running in your devixe, you can skip some steps including this one (but don't skip 9).
 
 **(6) Register hello object in ubus by running the server code.**
     
