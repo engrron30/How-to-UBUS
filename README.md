@@ -49,7 +49,6 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
             return 0;
         }
 
-        // Define the methods under "hello" object
         static const struct ubus_method hello_methods[] = {
             UBUS_METHOD_NOARG("say", hello_handler),
         };
