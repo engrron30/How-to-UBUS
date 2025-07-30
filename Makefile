@@ -13,7 +13,7 @@ build-packages:
 build-ubus-service:
 	$(MAKE) -C $(SRC_DIR) \
 		TOP_DIR=$(TOP_DIR) \
-		PACKAGES_DIR=$(PKG_DIR) \
+		PKG_DIR=$(PKG_DIR) \
 		OUTPUT_DIR=$(TOP_DIR)
 
 clean:
