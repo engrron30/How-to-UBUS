@@ -5,7 +5,6 @@ packages=(
     build-essential
     git
     libjson-c-dev
-    libblobmsg-json-dev
     pkg-config
 )
 
