@@ -1,25 +1,36 @@
-# Paths
-LIBUBOX_DIR := ../libubox
-UBUS_DIR := ../ubus
+# Directories
+PKG_DIR ?= ../Packages
+OUTPUT_DIR ?= ..
 
-LIBUBOX_BUILD := $(LIBUBOX_DIR)/build
-UBUS_BUILD := $(UBUS_DIR)/build
+# Library build directories
+LIBUBOX_BUILD := $(PKG_DIR)/libubox/build
+UBUS_BUILD := $(PKG_DIR)/ubus/build
 
 # Compiler and flags
 CC := gcc
-CFLAGS := -I$(LIBUBOX_DIR) -I$(UBUS_DIR)
-LDFLAGS := -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
-           -L$(UBUS_BUILD) -lubus
+CFLAGS := \
+  -I$(PKG_DIR)/json-c/include \
+  -I$(PKG_DIR)/libubox/include \
+  -I$(PKG_DIR)/ubus \
+  -I$(PKG_DIR)/libubox \
+  -I$(PKG_DIR)
 
-# Target
+LDFLAGS := \
+  -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
+  -L$(UBUS_BUILD) -lubus -lrt
+
+# Source files and target
 TARGET := hello_service
 SRC := hello_service.c
+OUT := $(OUTPUT_DIR)/$(TARGET)
 
-all: $(TARGET)
+# Default target
+all: $(OUT)
 
-$(TARGET): $(SRC)
+$(OUT): $(SRC)
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
+# Clean up
 clean:
-	rm -f $(TARGET)
+	rm -f $(OUT)
 

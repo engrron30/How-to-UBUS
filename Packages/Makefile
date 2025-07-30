@@ -1,4 +1,4 @@
-PACKAGES_DIR := $(CURDIR)
+PKG_DIR := $(CURDIR)
 
 # JSON-C
 JSON_C_DIR := json-c
@@ -13,10 +13,11 @@ UBOX_STATIC_LIB := $(UBOX_BUILD_DIR)/libubox.a
 UBUS_DIR := ubus
 UBUS_BUILD_DIR := $(UBUS_DIR)/build
 UBUS_STATIC_LIB := $(UBUS_BUILD_DIR)/libubus.a
+UBUSD_BIN := $(UBUS_BUILD_DIR)/ubusd
 
 
 # All target
-all: $(JSON_STATIC_LIB) $(UBOX_STATIC_LIB) $(LIBUBOX_STATIC_LIB)
+all: $(JSON_STATIC_LIB) $(UBOX_STATIC_LIB) $(UBUS_STATIC_LIB)
 
 # Build JSON-C
 $(JSON_STATIC_LIB): $(JSON_C_DIR)
@@ -27,13 +28,24 @@ $(JSON_STATIC_LIB): $(JSON_C_DIR)
 # Build libubox without Lua
 $(UBOX_STATIC_LIB): $(UBOX_DIR)
 	mkdir -p $(UBOX_BUILD_DIR)
-	cd $(UBOX_BUILD_DIR) && cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_LUA=OFF
+	cd $(UBOX_BUILD_DIR) && cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_LUA=OFF \
+                                     -DCMAKE_INSTALL_INCLUDEDIR=../include/libubox ..
 	cd $(UBOX_BUILD_DIR) && make -j$$(nproc)
 
 $(UBUS_STATIC_LIB): $(LIBUBOX_STATIC_LIB)
 	mkdir -p $(UBUS_BUILD_DIR)
-	cd $(UBUS_BUILD_DIR) && cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_PREFIX_PATH=../libubox/build
+	cd $(UBUS_BUILD_DIR) && cmake .. \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+		-DBUILD_LUA=OFF \
+		-Dubox_include_dir=$(PKG_DIR)/libubox \
+		-Dubox_library=$(PKG_DIR)/libubox/build/libubox.a \
+		-Dblob_library=$(PKG_DIR)/libubox/build/libblobmsg_json.a \
+		-DCMAKE_INCLUDE_PATH=$(PKG_DIR)/libubox \
+        -DCMAKE_C_FLAGS="-I$(abspath $(PKG_DIR))" \
+        -DCMAKE_EXE_LINKER_FLAGS="-lrt" \
+        -DCMAKE_PREFIX_PATH=$(PKG_DIR)/libubox/build
 	cd $(UBUS_BUILD_DIR) && make -j$$(nproc)
+	cp $(UBUSD_BIN) $(PKG_DIR)/../
 
 clean:
 	rm -rf $(JSON_BUILD_DIR) $(UBOX_BUILD_DIR) $(UBUS_BUILD_DIR)
