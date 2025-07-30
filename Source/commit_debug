@@ -1,4 +1,0 @@
-# can't do push --set-upstream origin master
-# this file is added to try push with fresh git clone
-# committed the last working commit hash
-# now, the git push works
