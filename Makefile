@@ -6,7 +6,7 @@ SRC_DIR   := $(TOP_DIR)/Source
 
 
 all: build-packages 
-#build-ubus-service
+# build-ubus-service
 
 build-packages:
 	$(MAKE) -C $(PKG_DIR)
@@ -18,5 +18,6 @@ build-ubus-service:
 		OUTPUT_DIR=$(TOP_DIR)
 
 clean:
-	$(MAKE) -C $(SRC_DIR) clean
+	$(MAKE) -C Packages clean
+	$(MAKE) -C Source clean
 
