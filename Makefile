@@ -5,8 +5,7 @@ SRC_DIR   := $(TOP_DIR)/Source
 .PHONY: all build-packages build-ubus-service clean
 
 
-all: build-packages 
-# build-ubus-service
+all: build-packages build-ubus-service
 
 build-packages:
 	$(MAKE) -C $(PKG_DIR)

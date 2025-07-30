@@ -1,14 +1,15 @@
-PACKAGES_DIR ?= ../Packages
+PKG_DIR ?= ../Packages
 OUTPUT_DIR ?= ..
 
-LIBUBOX_BUILD := $(PACKAGES_DIR)/libubox/build
-UBUS_BUILD := $(PACKAGES_DIR)/ubus/build
+LIBUBOX_BUILD := $(PKG_DIR)/libubox/build
+UBUS_BUILD := $(PKG_DIR)/ubus/build
 
 CC := gcc
 CFLAGS := \
-  -I$(PACKAGES_DIR)/libubox/include \
-  -I$(PACKAGES_DIR)/ubus \
-  -I$(PACKAGES_DIR)/libubox
+  -I$(PKG_DIR)/json-c/include \
+  -I$(PKG_DIR)/libubox/include \
+  -I$(PKG_DIR)/ubus \
+  -I$(PKG_DIR)/libubox
 LDFLAGS := \
   -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
   -L$(UBUS_BUILD) -lubus
