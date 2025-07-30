@@ -5,9 +5,13 @@ LIBUBOX_BUILD := $(PACKAGES_DIR)/libubox/build
 UBUS_BUILD := $(PACKAGES_DIR)/ubus/build
 
 CC := gcc
-CFLAGS := -I$(PACKAGES_DIR)/libubox -I$(PACKAGES_DIR)/ubus
-LDFLAGS := -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
-           -L$(UBUS_BUILD) -lubus
+CFLAGS := \
+  -I$(PACKAGES_DIR)/libubox/include \
+  -I$(PACKAGES_DIR)/ubus \
+  -I$(PACKAGES_DIR)/libubox
+LDFLAGS := \
+  -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
+  -L$(UBUS_BUILD) -lubus
 
 TARGET := hello_service
 SRC := hello_service.c
