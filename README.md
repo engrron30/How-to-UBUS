@@ -1,6 +1,6 @@
 # UBus Learning
 
-This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based platform which may be inconvenient for non-OpenWRT and Ubuntu user testing. The developer can use this guide as to trace the message coming from a service to the ubus daemon or simply ubusd.
+This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
 **(1) Prepare dependencies.** You may skip this part depends on your machine.
 
