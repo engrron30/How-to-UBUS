@@ -29,10 +29,10 @@ done
 # Install missing packages if any
 if [ ${#missing[@]} -ne 0 ]; then
     echo "Updating package list..."
-    #sudo apt update
+    sudo apt update
 
     echo "Installing missing packages: ${missing[*]}"
-    #sudo apt install -y "${missing[@]}"
+    sudo apt install -y "${missing[@]}"
 else
     echo "All packages are already installed."
 fi
