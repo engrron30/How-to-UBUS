@@ -12,11 +12,12 @@ CFLAGS := \
   -I$(PKG_DIR)/json-c/include \
   -I$(PKG_DIR)/libubox/include \
   -I$(PKG_DIR)/ubus \
-  -I$(PKG_DIR)/libubox
+  -I$(PKG_DIR)/libubox \
+  -I$(PKG_DIR)
 
 LDFLAGS := \
   -L$(LIBUBOX_BUILD) -lubox -lblobmsg_json \
-  -L$(UBUS_BUILD) -lubus
+  -L$(UBUS_BUILD) -lubus -lrt
 
 # Source files and target
 TARGET := hello_service

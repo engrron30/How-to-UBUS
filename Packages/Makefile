@@ -27,7 +27,8 @@ $(JSON_STATIC_LIB): $(JSON_C_DIR)
 # Build libubox without Lua
 $(UBOX_STATIC_LIB): $(UBOX_DIR)
 	mkdir -p $(UBOX_BUILD_DIR)
-	cd $(UBOX_BUILD_DIR) && cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_LUA=OFF
+	cd $(UBOX_BUILD_DIR) && cmake .. -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DBUILD_LUA=OFF \
+                                     -DCMAKE_INSTALL_INCLUDEDIR=../include/libubox ..
 	cd $(UBOX_BUILD_DIR) && make -j$$(nproc)
 
 $(UBUS_STATIC_LIB): $(LIBUBOX_STATIC_LIB)
