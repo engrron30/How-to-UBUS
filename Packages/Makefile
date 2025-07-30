@@ -13,6 +13,7 @@ UBOX_STATIC_LIB := $(UBOX_BUILD_DIR)/libubox.a
 UBUS_DIR := ubus
 UBUS_BUILD_DIR := $(UBUS_DIR)/build
 UBUS_STATIC_LIB := $(UBUS_BUILD_DIR)/libubus.a
+UBUSD_BIN := $(UBUS_BUILD_DIR)/ubusd
 
 
 # All target
@@ -44,6 +45,7 @@ $(UBUS_STATIC_LIB): $(LIBUBOX_STATIC_LIB)
         -DCMAKE_EXE_LINKER_FLAGS="-lrt" \
         -DCMAKE_PREFIX_PATH=$(PKG_DIR)/libubox/build
 	cd $(UBUS_BUILD_DIR) && make -j$$(nproc)
+	cp $(UBUSD_BIN) $(PKG_DIR)/../
 
 clean:
 	rm -rf $(JSON_BUILD_DIR) $(UBOX_BUILD_DIR) $(UBUS_BUILD_DIR)
