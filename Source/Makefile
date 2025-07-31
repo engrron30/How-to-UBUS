@@ -1,6 +1,8 @@
 # Directories
-PKG_DIR ?= ../Packages
-OUTPUT_DIR ?= ..
+TOP_DIR ?= $(CURDIR)/..
+PKG_DIR ?= $(TOP_DIR)/Packages
+SRC_DIR ?= $(TOP_DIR)/Source
+SCR_DIR ?= $(TOP_DIR)/Scripts
 
 # Library build directories
 LIBUBOX_BUILD := $(PKG_DIR)/libubox/build

@@ -2,6 +2,8 @@
 #include <libubox/blobmsg_json.h>
 #include <stdio.h>
 
+#define MY_OWN_SOCKET		"Scripts/hm.sock"
+
 static struct ubus_context *ctx;
 
 // Handler for the "say" method
@@ -33,7 +35,8 @@ static struct ubus_object hello_object = {
 };
 
 int main() {
-    ctx = ubus_connect(NULL);
+    //ctx = ubus_connect(NULL);
+    ctx = ubus_connect(MY_OWN_SOCKET);
     if (!ctx) {
         fprintf(stderr, "Failed to connect to ubusd\n");
         return 1;
