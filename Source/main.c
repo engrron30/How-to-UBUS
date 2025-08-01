@@ -59,7 +59,8 @@ int main() {
         return 1;
     }
 
-    printf("UBUS 'hello' object registered. Waiting for calls...\n");
+    printf("### UBUS 'hello' object registered.                 ###\n");
+    printf("### Waiting for someone to trigger hello service... ###\n");
     ubus_add_uloop(ctx);
     uloop_init();
     uloop_run();
