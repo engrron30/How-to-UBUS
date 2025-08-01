@@ -23,5 +23,5 @@ build-ubus-service:
 clean:
 	$(MAKE) -C Packages clean
 	$(MAKE) -C Source clean
-	rm $(UBUSD_BIN) $(HELLO_SRV_BIN)
+	rm $(SCR_DIR)/$(UBUSD_BIN) $(SCR_DIR)/$(HELLO_SRV_BIN)
 
