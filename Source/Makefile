@@ -4,6 +4,7 @@ PKG_DIR ?= $(TOP_DIR)/Packages
 SRC_DIR ?= $(TOP_DIR)/Source
 SCR_DIR ?= $(TOP_DIR)/Scripts
 INC_DIR := $(TOP_DIR)/Include
+OUTPUT_DIR ?= SCR_DIR
 
 # Library build directories
 LIBUBOX_BUILD := $(PKG_DIR)/libubox/build
@@ -24,7 +25,7 @@ LDFLAGS := \
   -L$(UBUS_BUILD) -lubus -lrt
 
 # Source files and target
-TARGET := hello_service
+TARGET := $(OUTPUT_DIR)/hello_service
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(SRCS:$(SRC_DIR)/%.c=%.o)
 

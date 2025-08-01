@@ -81,7 +81,7 @@ int example_main() {
         printf("Found socket: %s\n", socket_path);
         free(socket_path);
     } else {
-        printf("No socket file found.\n");
+	printf("No socket found!\n");
     }
 
     return 0;

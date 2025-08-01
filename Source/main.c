@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "find_ubus.h"
+#include "find_ubus_socket.h"
 
 #define MY_OWN_SOCKET		"Scripts/hm.sock"
 
@@ -39,8 +39,15 @@ static struct ubus_object hello_object = {
 
 
 int main() {
-    //ctx = ubus_connect(NULL);
-    ctx = ubus_connect(MY_OWN_SOCKET);
+    char *socket_path = find_socket_file();
+    if (socket_path) {
+	printf("Socket found: %s\n", socket_path);
+	ctx = ubus_connect(socket_path);
+    } else {
+	printf("Connecting to default socket!\n");
+	ubus_connect(NULL);
+    }
+
     if (!ctx) {
         fprintf(stderr, "Failed to connect to ubusd\n");
         return 1;
@@ -57,6 +64,7 @@ int main() {
     uloop_init();
     uloop_run();
 
+    free(socket_path);
     ubus_free(ctx);
     return 0;
 }
