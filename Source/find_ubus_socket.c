@@ -55,7 +55,8 @@ exit:
 }
 
 /*
- * Checks if filename string is ending with ".sock" keyword
+ * Checks if filename string is ending with ".sock" keyword.
+ * If found, return true.
  */ 
 static int ends_with_sock(const char *filename)
 {
