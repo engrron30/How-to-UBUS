@@ -1,6 +1,9 @@
 #include <libubus.h>
 #include <libubox/blobmsg_json.h>
 #include <stdio.h>
+#include <unistd.h>
+
+#include "find_ubus.h"
 
 #define MY_OWN_SOCKET		"Scripts/hm.sock"
 
@@ -33,6 +36,7 @@ static struct ubus_object hello_object = {
     .methods = hello_methods,
     .n_methods = ARRAY_SIZE(hello_methods),
 };
+
 
 int main() {
     //ctx = ubus_connect(NULL);
