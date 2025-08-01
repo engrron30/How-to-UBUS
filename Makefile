@@ -15,13 +15,15 @@ build-packages:
 	$(MAKE) -C $(PKG_DIR)
 
 build-ubus-service:
-	$(MAKE) -C $(SRC_DIR) \
-		TOP_DIR=$(TOP_DIR) \
-		PKG_DIR=$(PKG_DIR) \
+	$(MAKE) -C $(SRC_DIR) 			\
+		TOP_DIR=$(TOP_DIR) 		\
+		PKG_DIR=$(PKG_DIR) 		\
 		OUTPUT_DIR=$(SCR_DIR)
 
 clean:
 	$(MAKE) -C Packages clean
 	$(MAKE) -C Source clean
-	rm $(SCR_DIR)/$(UBUSD_BIN) $(SCR_DIR)/$(HELLO_SRV_BIN)
+	rm -f $(SCR_DIR)/$(UBUSD_BIN)		\
+	      $(SCR_DIR)/$(HELLO_SRV_BIN)	\
+	      $(SCR_DIR)/*.sock
 
