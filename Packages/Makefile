@@ -3,19 +3,20 @@ PKG_DIR := $(CURDIR)
 SCR_DIR := Scripts
 
 # JSON-C
-JSON_C_DIR := json-c
-JSON_BUILD_DIR := $(JSON_C_DIR)/build
+JSON_C_DIR	:= json-c
+JSON_BUILD_DIR	:= $(JSON_C_DIR)/build
 JSON_STATIC_LIB := $(JSON_BUILD_DIR)/libjson-c.a
 
 # libubox
-UBOX_DIR := libubox
-UBOX_BUILD_DIR := $(UBOX_DIR)/build
+UBOX_DIR	:= libubox
+UBOX_BUILD_DIR	:= $(UBOX_DIR)/build
 UBOX_STATIC_LIB := $(UBOX_BUILD_DIR)/libubox.a
 
-UBUS_DIR := ubus
-UBUS_BUILD_DIR := $(UBUS_DIR)/build
+UBUS_DIR	:= ubus
+UBUS_BUILD_DIR	:= $(UBUS_DIR)/build
 UBUS_STATIC_LIB := $(UBUS_BUILD_DIR)/libubus.a
-UBUSD_BIN := $(UBUS_BUILD_DIR)/ubusd
+UBUSD_BIN	:= $(UBUS_BUILD_DIR)/ubusd
+UBUS_BIN	:= $(UBUS_BUILD_DIR)/ubus
 
 all: $(JSON_STATIC_LIB) $(UBOX_STATIC_LIB) $(UBUS_STATIC_LIB)
 
@@ -46,6 +47,7 @@ $(UBUS_STATIC_LIB): $(LIBUBOX_STATIC_LIB)
         -DCMAKE_PREFIX_PATH=$(PKG_DIR)/libubox/build
 	cd $(UBUS_BUILD_DIR) && make -j$$(nproc)
 	cp $(UBUSD_BIN) $(TOP_DIR)/$(SCR_DIR)
+	cp $(UBUS_BIN) $(TOP_DIR)/$(SCR_DIR)
 
 clean:
 	rm -rf $(JSON_BUILD_DIR) $(UBOX_BUILD_DIR) $(UBUS_BUILD_DIR)
