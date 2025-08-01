@@ -8,15 +8,14 @@
 #define TOP_DIR             "../"
 #define UBUS_SOCKET_DIR     TOP_DIR "Scripts/"
 
-int ends_with_sock(const char *filename) {
-    const char *ext = ".sock";
-    size_t len = strlen(filename);
-    size_t ext_len = strlen(ext);
-    return len >= ext_len && strcmp(filename + len - ext_len, ext) == 0;
-}
+static int ends_with_sock(const char *filename);
 
-// Return a heap-allocated string with the full socket file path, or NULL if not found
-char *find_socket_file() {
+/*
+ *  Return a heap-allocated string with the full socket file path, 
+ *  or NULL if not found
+ */  
+char *find_socket_file()
+{
     char *ubus_socket_path = NULL;
     struct dirent *entry;
     DIR *dp = opendir(UBUS_SOCKET_DIR);
@@ -44,7 +43,8 @@ char *find_socket_file() {
 		goto exit;
 	    }
 
-	    ubus_socket_path = strdup(abs_dir); // Found Socket!
+	    /* Socket is found! */
+	    ubus_socket_path = strdup(abs_dir);
             goto exit;
         }
     }
@@ -54,7 +54,28 @@ exit:
     return ubus_socket_path;
 }
 
-int main() {
+/*
+ * Checks if filename string is ending with ".sock" keyword
+ */ 
+static int ends_with_sock(const char *filename)
+{
+    const char *ext = ".sock";
+    size_t len = strlen(filename);
+    size_t ext_len = strlen(ext);
+    return len >= ext_len && strcmp(filename + len - ext_len, ext) == 0;
+}
+
+/* 
+ * Example of calling the above function
+ * 
+ * If someone desires to test this file, rename this example_main as
+ * main then compile this file with a simple command:
+ * 	gcc find_ubus_socket.c
+ *
+ * This will generate a.out and test this executable file if it
+ * will output the socket string
+ */ 
+int example_main() {
     char *socket_path = find_socket_file();
     if (socket_path) {
         printf("Found socket: %s\n", socket_path);
@@ -65,4 +86,3 @@ int main() {
 
     return 0;
 }
-
