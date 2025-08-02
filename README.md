@@ -16,6 +16,8 @@ Instead of manually pasting these commands on your terminal, you may use the she
 
 
 **(2) Prepare libubox.**
+
+Do the following commands to clone and build libubox:
     
     git clone https://git.openwrt.org/project/libubox.git
     cd libubox
