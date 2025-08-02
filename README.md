@@ -12,7 +12,7 @@ Using __apt__, update and install the necessary dependencies in your machine.
 
 Instead of manually pasting these commands on your terminal, you may use the shell script in this repo:
 
-    Scripts/01_install-dependencies.sh
+    ./Scripts/01_install-dependencies.sh
 
 
 **(2) Prepare libubox.**
