@@ -1,4 +1,4 @@
-### UBus Learning
+# UBus Learning
 
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
