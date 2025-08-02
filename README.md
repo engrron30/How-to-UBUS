@@ -1,11 +1,19 @@
-# UBus Learning
+### UBus Learning
 
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
-**(1) Prepare dependencies.** You may skip this part depends on your machine.
+## How to Prepare Environment
+
+**(1) Prepare dependencies.** 
+Using __apt__, update and install the necessary dependencies in your machine.
 
     sudo apt update
     sudo apt install -y build-essential git libjson-c-dev libblobmsg-json-dev pkg-config
+
+Instead of manually pasting these commands on your terminal, you may use the shell script in this repo:
+
+    Scripts/01_install-dependencies.sh
+
 
 **(2) Prepare libubox.**
     
