@@ -3,6 +3,7 @@
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
 
+
 ## 📚 Contents
 - [🛠️ How to Prepare Environment](#how-to-prepare-environment)
     - [Prepare dependencies](#1-prepare-dependencies)
@@ -14,6 +15,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
     - [Trigger hello from ubus](#7-trigger-hello-from-ubus)
 
 - [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-ubus)
+
 
 
 <a name="how-to-prepare-environment"></a>
@@ -145,6 +147,7 @@ If hello service is successfully registered in ubus, you should see your hello_s
 ### 7. Trigger hello from ubus.
     
     sudo ./Scripts/ubus call hello say
+
 
 
 <a name="structure-of-service-code-in-ubus"></a>
