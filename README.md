@@ -6,6 +6,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
 - [🛠️ How to Prepare Environment](#how-to-prepare-environment)
     - [Prepare dependencies](#1.-Prepare-dependencies)
     - [Prepare libubox and ubus code](#2.-Prepare-libubox-and-ubus-code)
+- [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-UBUS)
 
 ## 🛠️ How to Prepare Environment
 
@@ -139,7 +140,5 @@ If you are done with Step 6, you should see your hello_service running in ubus w
 ### 8. Trigger hello from ubus.
     
     sudo ./Scripts/ubus call hello say
-
-### 9. Be awesome!
 
 ## 🛠️ Structure of Service Code in UBUS
