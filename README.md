@@ -10,6 +10,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
     - [Build the Packages and Source](#4-build-the-packages-and-source)
     - [Run ubusd](#5-run-ubusd)
     - [Register hello service in ubus](#6-register-hello-service-in-ubus)
+    - [Trigger hello from ubus](#7-trigger-hello-from-ubus)
 - [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-ubus)
 
 <a name="how-to-prepare-environment"></a>
