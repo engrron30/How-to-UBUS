@@ -16,35 +16,18 @@ __[RECOMMENDED]__ Instead of manually pasting these commands on your terminal, y
     ./Scripts/01_install-dependencies.sh
 
 
-**(2) Prepare libubox.**
+**(2) Prepare libubox and ubus code.**
 
-Do the following commands to clone and build libubox:
+The _libubox_ and _ubus_ code are the vital part of the code to run ubusd. Their codebase can be collected in checking OpenWRT links by doing the following commands:
     
     git clone https://git.openwrt.org/project/libubox.git
-    cd libubox
-    mkdir build && cd build
-    cmake -DBUILD_LUA=OFF ..
-    make
-    cd ../..
+    git clone https://git.openwrt.org/project/ubus.git
 
 The cloning step can be done by manually running the script file below:
 
     ./Scripts/02_clone-repos.sh
 
-__[RECOMMENDED]__ When you clone this repo, the libubox and ubox repos are already included in the Packages directory. No need to clone manually.
-
-**(2) Prepare ubus code.**
-
-This time, you are going to build ubus with libubox dependencies.
-    
-    git clone https://git.openwrt.org/project/ubus.git
-    cd ubus
-    mkdir build && cd build
-    cmake -DLIBUBOX_INCLUDE_DIR=../libubox -DLIBUBOX_LIBRARIES=../libubox/build -DBUILD_LUA=OFF ..
-    make
-    cd ../..
-
-__[RECOMMENDED]__ Same with step number 2.
+__[RECOMMENDED]__ Fortunately, you do not have to the steps above. After you clone this repo, the _libubox_ and _ubus_ code are already added in Packages directory.
 
 **(3) Prepare your service code:**
 
