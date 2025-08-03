@@ -175,9 +175,27 @@ What we would like to do is to add a _message_ attribute with value "Hello from 
 
 ### Define your hello service method.
 
-What we added previously is the handler. This time, we specify which method is going to trigger the previous handler. If the ubus command uses the _say_ method, the handler above is going to be executed.
+What we added previously is the handler. This time, we specify which method is going to trigger the previous handler. If the ubus command uses the _say_ method, the handler above is going to be executed. You may add other ubus methods here by appending it to the array below.
 
     static const struct ubus_method hello_methods[] = {
         UBUS_METHOD_NOARG("say", hello_handler),
+    };
+
+### Define the hello service type.
+
+What we added previously is the method. This time, we specify which type is our hello service. In this part, we link the hello_type to use hello_methods array as its ubus methods.
+
+    static struct ubus_object_type hello_type =
+        UBUS_OBJECT_TYPE("hello_type", hello_methods);
+
+### Define the hello service object
+
+The hello service is going to be abstracted as a whole object. This object requires the method and type we set earlier. In this case, the following code suffices to add hello object:
+
+    static struct ubus_object hello_object = {
+        .name = "hello",
+        .type = &hello_type,
+        .methods = hello_methods,
+        .n_methods = ARRAY_SIZE(hello_methods),
     };
 
