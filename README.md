@@ -103,7 +103,7 @@ What happens when you do make in Source are the following commands but you do no
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
 
-_[RECOMMENDED]_ You can skip the above step for simplicity. Just do _make_ in the top directory and both Packages and Source are compiled.
+__[RECOMMENDED]__ You can skip the above step for simplicity. Just do _make_ in the top directory and both Packages and Source are compiled.
 
 To remove the compiled file, just do:
 
