@@ -126,7 +126,7 @@ To remove the compiled file, just do:
 
 The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
     
-    sudo ubusd -s "ubus.sock" &
+    sudo ./Scripts/ubusd -s "ubus.sock" &
 
 __[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
@@ -134,15 +134,13 @@ __[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
 Register the hello service and its object and method in ubus by running the following service code:
     
-    sudo ./hello_service &
+    sudo ./Scripts/hello_service &
 
-### 7. List registered object in ubus.
-    
-If you are done with Step 6, you should see your hello_service running in ubus waiting to be called. Verified if it is listed in ubus by doing the following command:
+If hello service is successfully registered in ubus, you should see your hello_service running in ubus waiting to be called. Verify if it is listed in ubus by doing the following command:
 
     sudo ./Scripts/ubus list
 
-### 8. Trigger hello from ubus.
+### 7. Trigger hello from ubus.
     
     sudo ./Scripts/ubus call hello say
 
