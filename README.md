@@ -122,7 +122,7 @@ The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ dir
 
 __[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
-**(6) Register hello object in ubus by running the server code.**
+### 6. Register hello object in ubus by running the server code.
     
     sudo ./hello_service &
 
