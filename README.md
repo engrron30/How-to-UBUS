@@ -5,6 +5,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
 ## How to Prepare Environment
 
 **(1) Prepare dependencies.** 
+
 Using __apt__, update and install the necessary dependencies in your machine.
 
     sudo apt update
