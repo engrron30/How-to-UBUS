@@ -27,7 +27,7 @@ The cloning step can be done by manually running the script file below:
 
     ./Scripts/02_clone-repos.sh
 
-__[RECOMMENDED]__ Fortunately, you do not have to the steps above. After you clone this repo, the _libubox_ and _ubus_ code are already added in Packages directory.
+__[RECOMMENDED]__ Fortunately, you do not have to do the steps above. After you clone this repo, the _libubox_ and _ubus_ code are already added in Packages directory.
 
 **(3) Prepare your service code:**
 
