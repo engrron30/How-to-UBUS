@@ -31,7 +31,7 @@ __[RECOMMENDED]__ Fortunately, you do not have to do the steps above. After you 
 
 ### 3. Prepare your service code.
 
-In the __Source__ directory, the __main.c__ file serves as the main program for hello service. This hello service intends to be registered in the ubus daemon, so that later, it can be called when someone triggers it in ubus. This service just prints hello as its message attribute value when triggered.
+In the _Source_ directory, the _main.c_ file serves as the main program for hello service. This hello service intends to be registered in the ubus daemon, so that later, it can be called when someone triggers it in ubus. This service just prints hello as its message attribute value when triggered.
 
     Hello Service Code:
         #include <libubus.h>
