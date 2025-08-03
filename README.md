@@ -29,7 +29,7 @@ The cloning step can be done by manually running the script file below:
 
 __[RECOMMENDED]__ Fortunately, you do not have to do the steps above. After you clone this repo, the _libubox_ and _ubus_ code are already added in Packages directory.
 
-**(3) Prepare your service code:**
+### 3. Prepare your service code.
 
 In the __Source__ directory, the __main.c__ file serves as the main program for hello service. This hello service intends to be registered in the ubus daemon, so that later, it can be called when someone triggers it in ubus. This service just prints hello as its message attribute value when triggered.
 
