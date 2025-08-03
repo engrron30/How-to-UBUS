@@ -1,34 +1,42 @@
-# UBus Learning
+# How-to-UBUS
 
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
-**(1) Prepare dependencies.** You may skip this part depends on your machine.
+## 📚 Contents
+- [How to Prepare Environment](#🛠️-how-to-prepare-environment)
+    - [Prepare dependencies](#1.-Prepare-dependencies)
+    - [Prepare libubox and ubus code](#2.-Prepare-libubox-and-ubus-code)
+
+## 🛠️ How to Prepare Environment
+
+### 1. Prepare dependencies.
+
+Using __apt__, update and install the necessary dependencies in your machine.
 
     sudo apt update
     sudo apt install -y build-essential git libjson-c-dev libblobmsg-json-dev pkg-config
 
-**(2) Prepare libubox.**
+__[RECOMMENDED]__ Instead of manually pasting these commands on your terminal, you may use the shell script in this repo:
+
+    ./Scripts/01_install-dependencies.sh
+
+
+### 2. Prepare libubox and ubus code.
+
+The _libubox_ and _ubus_ code are the vital part of the code to run ubusd. Their codebase can be collected in checking OpenWRT links by doing the following commands:
     
     git clone https://git.openwrt.org/project/libubox.git
-    cd libubox
-    mkdir build && cd build
-    cmake -DBUILD_LUA=OFF ..
-    make
-    cd ../..
-
-**(2) Prepare ubus code.** This time, you are going to build ubus with libubox dependencies.
-    
     git clone https://git.openwrt.org/project/ubus.git
-    cd ubus
-    mkdir build && cd build
-    cmake -DLIBUBOX_INCLUDE_DIR=../libubox -DLIBUBOX_LIBRARIES=../libubox/build -DBUILD_LUA=OFF ..
-    make
-    cd ../..
 
-**(3) Prepare your service code:**
-    
-    mkdir my_program && cd my_program
-    vim hello_service.c
+The cloning step can be done by manually running the script file below:
+
+    ./Scripts/02_clone-repos.sh
+
+__[RECOMMENDED]__ Fortunately, you do not have to do the steps above. After you clone this repo, the _libubox_ and _ubus_ code are already added in Packages directory.
+
+### 3. Prepare your service code.
+
+In the _Source_ directory, the _main.c_ file serves as the main program for hello service. This hello service intends to be registered in the ubus daemon, so that later, it can be called when someone triggers it in ubus. This service just prints hello as its message attribute value when triggered.
 
     Hello Service Code:
         #include <libubus.h>
@@ -85,38 +93,49 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
             return 0;
         }
 
-**(4) Compile the service source code:**
+### 4. Build the Packages and Source
+
+There are two main directories to compile in this repo: (a) _Packages_ and (b) _Source_. 
+
+_Packages_ contain the needed OpenWRT-based code to run ubusd. To build the packages, go to _Packages_ directory then do _make_ command.
+
+_Source_ is where our service code is located. To build the packages, go to _Source_ directory then do _make_ command. So, if you want to add your own service, add or modify file in _Source_ directory.
+
+What happens when you do make in Source are the following commands but you do not need to manually type these because it is aready handled by Makefile for abstraction.
     
-    gcc -o hello_service hello_service.c \
-        -I../libubox -I../ubus \
+    gcc -o hello_service main.c \
+        -I../libubox -I../ubus -I../Include \
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
 
-In the latest commit, this GCC command line is now automated in the Makefile in _my_program_ directory. Instead of pasting this whole line to the terminal, just run the following:
-
-    cd /my_program
-    make
+__[RECOMMENDED]__ You can skip the above step for simplicity. Just do _make_ in the top directory and both Packages and Source are compiled.
 
 To remove the compiled file, just do:
 
     make clean
 
-**(5) Run ubusd:**
+### 5. Run ubusd.
+
+The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
     
-    sudo ubusd &
+    sudo ubusd -s "ubus.sock" &
 
-If you are familiar how to start ubusd in your machine or an ubusd is already running in your devixe, you can skip some steps including this one (but don't skip 9).
+__[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
-**(6) Register hello object in ubus by running the server code.**
+### 6. Register hello service in ubus.
+
+Register the hello service and its object and method in ubus by running the following service code:
     
     sudo ./hello_service &
 
-(7) List registered object in ubus:
+### 7. List registered object in ubus.
     
-    sudo ../ubus/build/ubus list
+If you are done with Step 6, you should see your hello_service running in ubus waiting to be called. Verified if it is listed in ubus by doing the following command:
 
-(8) Trigger hello from ubus:	
+    sudo ./Scripts/ubus list
+
+### 8. Trigger hello from ubus.
     
-    sudo ../ubus/build/ubus call hello say
+    sudo ./Scripts/ubus call hello say
 
-(9) Be awesome!
+### 9. Be awesome!
