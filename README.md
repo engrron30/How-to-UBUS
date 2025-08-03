@@ -114,11 +114,13 @@ To remove the compiled file, just do:
 
     make clean
 
-**(5) Run ubusd:**
-    
-    sudo ubusd &
+### 5. Run ubusd.
 
-If you are familiar how to start ubusd in your machine or an ubusd is already running in your devixe, you can skip some steps including this one (but don't skip 9).
+The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
+    
+    sudo ubusd -s "ubus.sock" &
+
+__[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
 **(6) Register hello object in ubus by running the server code.**
     
