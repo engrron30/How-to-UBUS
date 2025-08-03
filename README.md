@@ -2,6 +2,11 @@
 
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
+## 📚 Contents
+- [How to Prepare Environment](#🛠️-how-to-Prepare-Environment)
+    - [Prepare dependencies](#1.-Prepare-dependencies)
+    - [Prepare libubox and ubus code](#2.-Prepare-libubox-and-ubus-code)
+
 ## 🛠️ How to Prepare Environment
 
 ### 1. Prepare dependencies.
