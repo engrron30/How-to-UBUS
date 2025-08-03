@@ -27,7 +27,7 @@ Do the following commands to clone and build libubox:
     make
     cd ../..
 
-The cloning step can be done my manually running the script file below:
+The cloning step can be done by manually running the script file below:
 
     ./Scripts/02_clone-repos.sh
 
