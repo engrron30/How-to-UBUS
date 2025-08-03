@@ -27,7 +27,6 @@ __[RECOMMENDED]__ Instead of manually pasting these commands on your terminal, y
 
     ./Scripts/01_install-dependencies.sh
 
-
 ### 2. Prepare libubox and ubus code.
 
 The _libubox_ and _ubus_ code are the vital part of the code to run ubusd. Their codebase can be collected in checking OpenWRT links by doing the following commands:
@@ -54,10 +53,9 @@ A simple hello service in C could be the following:
     static struct ubus_context *ctx;
 
     // Handler for the "say" method
-    static int
-    hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
-                  struct ubus_request_data *req, const char *method,
-                         struct blob_attr *msg) {
+    static int hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
+                             struct ubus_request_data *req, const char *method,
+                             struct blob_attr *msg) {
         struct blob_buf b = {};
         blob_buf_init(&b, 0);
         blobmsg_add_string(&b, "message", "Hello from ubus!");
@@ -147,3 +145,31 @@ If hello service is successfully registered in ubus, you should see your hello_s
 
 <a name="structure-of-service-code-in-ubus"></a>
 ## 🛠️ Structure of Service Code in UBUS
+
+Your service code is what we would like to register in the ubus daemon. To create one, your code should contain the following:
+
+### Includes
+
+This is needed to find our libubox and ubus code in the Packages. _stdio_ is also included as default.
+
+    #include <libubus.h>
+    #include <libubox/blobmsg_json.h>
+    #include <stdio.h>
+
+### Define your hello service handler. 
+
+What we would like to do is to add a _message_ attribute with value "Hello from ubus!" in this _hello_handler_ function. You may add other attributes but in this case, we make it simple.
+
+    static struct ubus_context *ctx;
+
+    static int hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
+                             struct ubus_request_data *req, const char *method,
+                             struct blob_attr *msg) {
+        struct blob_buf b = {};
+        blob_buf_init(&b, 0);
+        blobmsg_add_string(&b, "message", "Hello from ubus!");
+        ubus_send_reply(ctx, req, b.head);
+        blob_buf_free(&b);
+        return 0;
+    }
+
