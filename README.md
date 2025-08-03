@@ -173,3 +173,11 @@ What we would like to do is to add a _message_ attribute with value "Hello from 
         return 0;
     }
 
+### Define your hello service method.
+
+What we added previously is the handler. This time, we specify which method is going to trigger the previous handler. If the ubus command uses the _say_ method, the handler above is going to be executed.
+
+    static const struct ubus_method hello_methods[] = {
+        UBUS_METHOD_NOARG("say", hello_handler),
+    };
+
