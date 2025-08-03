@@ -88,7 +88,9 @@ In the _Source_ directory, the _main.c_ file serves as the main program for hell
             return 0;
         }
 
-**(4) Compile the service source code:**
+### 4. Build the Packages and Source
+
+There are two main directories to compile in this repo: (a) _Packages_ and (b) _Source_. _Packages_ contain the needed OpenWRT-based code to run ubusd. _Source_ is where our service code is located. So, if you want to add your own service, add or modify file in _Source_ directory.
     
     gcc -o hello_service hello_service.c \
         -I../libubox -I../ubus \
