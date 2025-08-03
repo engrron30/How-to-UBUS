@@ -44,7 +44,7 @@ This time, you are going to build ubus with libubox dependencies.
     make
     cd ../..
 
-[RECOMMENDED] Same with step number 2.
+__[RECOMMENDED]__ Same with step number 2.
 
 **(3) Prepare your service code:**
     
