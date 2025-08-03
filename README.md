@@ -90,17 +90,20 @@ In the _Source_ directory, the _main.c_ file serves as the main program for hell
 
 ### 4. Build the Packages and Source
 
-There are two main directories to compile in this repo: (a) _Packages_ and (b) _Source_. _Packages_ contain the needed OpenWRT-based code to run ubusd. _Source_ is where our service code is located. So, if you want to add your own service, add or modify file in _Source_ directory.
+There are two main directories to compile in this repo: (a) _Packages_ and (b) _Source_. 
+
+_Packages_ contain the needed OpenWRT-based code to run ubusd. To build the packages, go to _Packages_ directory then do _make_ command.
+
+_Source_ is where our service code is located. To build the packages, go to _Source_ directory then do _make_ command. So, if you want to add your own service, add or modify file in _Source_ directory.
+
+What happens when you do make in Source are the following commands but you do not need to manually type these because it is aready handled by Makefile for abstraction.
     
-    gcc -o hello_service hello_service.c \
-        -I../libubox -I../ubus \
+    gcc -o hello_service main.c \
+        -I../libubox -I../ubus -I../Include \
         -L../libubox/build -lubox -lblobmsg_json \
         -L../ubus/build -lubus
 
-In the latest commit, this GCC command line is now automated in the Makefile in _my_program_ directory. Instead of pasting this whole line to the terminal, just run the following:
-
-    cd /my_program
-    make
+You can skip the above step for simplicity. Just do _make_ in the top directory and both Packages and Source are compiled.
 
 To remove the compiled file, just do:
 
