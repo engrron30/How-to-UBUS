@@ -4,7 +4,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
 
 ## How to Prepare Environment
 
-**(1) Prepare dependencies.** 
+### 1. Prepare dependencies.
 
 Using __apt__, update and install the necessary dependencies in your machine.
 
@@ -16,7 +16,7 @@ __[RECOMMENDED]__ Instead of manually pasting these commands on your terminal, y
     ./Scripts/01_install-dependencies.sh
 
 
-**(2) Prepare libubox and ubus code.**
+### 2. Prepare libubox and ubus code.
 
 The _libubox_ and _ubus_ code are the vital part of the code to run ubusd. Their codebase can be collected in checking OpenWRT links by doing the following commands:
     
