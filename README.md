@@ -134,8 +134,8 @@ If you are done with Step 6, you should see your hello_service running in ubus w
 
     sudo ./Scripts/ubus list
 
-### 8. Trigger hello from ubus:	
+### 8. Trigger hello from ubus.
     
     sudo ./Scripts/ubus call hello say
 
-(9) Be awesome!
+### 9. Be awesome!
