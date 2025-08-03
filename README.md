@@ -5,7 +5,8 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
 ## 📚 Contents
 - [How to Prepare Environment](#how-to-prepare-environment)
     - [Prepare dependencies](#1-prepare-dependencies)
-    - [Prepare libubox and ubus code](#2.-Prepare-libubox-and-ubus-code)
+    - [Prepare libubox and ubus code](#2.-prepare-libubox-and-ubus-code)
+    - [Prepare your service code](3.-prepare-your-service-code)
 - [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-ubus)
 
 <a name="how-to-prepare-environment"></a>
