@@ -54,16 +54,16 @@ A simple hello service in C could be the following:
         struct blob_buf b = {};
         blob_buf_init(&b, 0);
         blobmsg_add_string(&b, "message", "Hello from ubus!");
-       ubus_send_reply(ctx, req, b.head);
-       blob_buf_free(&b);
-       return 0;
-   }
-
-   static const struct ubus_method hello_methods[] = {
+        ubus_send_reply(ctx, req, b.head);
+        blob_buf_free(&b);
+        return 0;
+    }
+    
+    static const struct ubus_method hello_methods[] = {
         UBUS_METHOD_NOARG("say", hello_handler),
-   };
-
-   static struct ubus_object_type hello_type =
+    };
+    
+    static struct ubus_object_type hello_type =
         UBUS_OBJECT_TYPE("hello_type", hello_methods);
 
     static struct ubus_object hello_object = {
@@ -141,3 +141,5 @@ If you are done with Step 6, you should see your hello_service running in ubus w
     sudo ./Scripts/ubus call hello say
 
 ### 9. Be awesome!
+
+## 🛠️ Structure of Service Code in UBUS
