@@ -128,9 +128,11 @@ Register the hello service and its object and method in ubus by running the foll
     
     sudo ./hello_service &
 
-(7) List registered object in ubus:
+### 7. List registered object in ubus.
     
-    sudo ../ubus/build/ubus list
+If you are done with Step 6, you should see your hello_service running in ubus waiting to be called. Verified if it is listed in ubus by doing the following command:
+
+    sudo ./Scripts/ubus list
 
 (8) Trigger hello from ubus:	
     
