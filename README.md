@@ -47,9 +47,8 @@ This time, you are going to build ubus with libubox dependencies.
 __[RECOMMENDED]__ Same with step number 2.
 
 **(3) Prepare your service code:**
-    
-    mkdir my_program && cd my_program
-    vim hello_service.c
+
+In the __Source__ directory, the __main.c__ file serves as the main program for hello service. This hello service intends to be registered in the ubus daemon, so that later, it can be called when someone triggers it in ubus.
 
     Hello Service Code:
         #include <libubus.h>
