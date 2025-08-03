@@ -10,7 +10,7 @@ Using __apt__, update and install the necessary dependencies in your machine.
     sudo apt update
     sudo apt install -y build-essential git libjson-c-dev libblobmsg-json-dev pkg-config
 
-Instead of manually pasting these commands on your terminal, you may use the shell script in this repo:
+__[RECOMMENDED]__ Instead of manually pasting these commands on your terminal, you may use the shell script in this repo:
 
     ./Scripts/01_install-dependencies.sh
 
@@ -26,7 +26,15 @@ Do the following commands to clone and build libubox:
     make
     cd ../..
 
-**(2) Prepare ubus code.** This time, you are going to build ubus with libubox dependencies.
+The cloning step can be done my manually running the script file below:
+
+    ./Scripts/02_clone-repos.sh
+
+__[RECOMMENDED]__ When you clone this repo, the libubox and ubox repos are already included in the Packages directory. No need to clone manually.
+
+**(2) Prepare ubus code.**
+
+This time, you are going to build ubus with libubox dependencies.
     
     git clone https://git.openwrt.org/project/ubus.git
     cd ubus
@@ -34,6 +42,8 @@ Do the following commands to clone and build libubox:
     cmake -DLIBUBOX_INCLUDE_DIR=../libubox -DLIBUBOX_LIBRARIES=../libubox/build -DBUILD_LUA=OFF ..
     make
     cd ../..
+
+[RECOMMENDED] Same with step number 2.
 
 **(3) Prepare your service code:**
     
