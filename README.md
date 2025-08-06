@@ -2,7 +2,7 @@
 
 This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically executed in OpenWRT-based and this repo can serve as guide to simulate or experiment ubus in Linux-based terminal.
 
-<br>
+![image](Docs/Running-UBUS-Walkthrough.gif)
 
 ## 📚 Contents
 - [🛠️ How to Prepare Environment](#how-to-prepare-environment)
@@ -13,8 +13,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
     - [Run ubusd](#5-run-ubusd)
     - [Register hello service in ubus](#6-register-hello-service-in-ubus)
     - [Trigger hello from ubus](#7-trigger-hello-from-ubus)
-
-- [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-ubus)
+- [🛠️ Structure of Service Code in UBUS](#service-code-c-structure-in-ubus)
 
 <br>
 
@@ -57,7 +56,6 @@ A simple hello service in C could be the following:
 
     static struct ubus_context *ctx;
 
-    // Handler for the "say" method
     static int hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
                              struct ubus_request_data *req, const char *method,
                              struct blob_attr *msg) {
@@ -128,30 +126,32 @@ To remove the compiled file, just do:
 
 ### 5. Run ubusd.
 
-The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
+The compiled _ubusd_, _ubus_ and _hello-service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
     
-    sudo ./Scripts/ubusd -s "ubus.sock" &
+    sudo ./ubusd -s "my_own_socket.sock" &
 
-__[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
+__[ALTERNATIVE]__ Or simply run the *03_run-ubusd.sh* in Scripts folder.
 
 ### 6. Register hello service in ubus.
 
 Register the hello service and its object and method in ubus by running the following service code:
     
-    sudo ./Scripts/hello_service &
+    sudo ./Scripts/hello-service -s my_own_socket.sock &
+
+if this command failed to run hello-service, export the ubox shared object. See the export command in *Scripts/04_run-hello-service.sh*. You can just simply run this shell script if encountered difficulties in executing hello-service.
 
 If hello service is successfully registered in ubus, you should see your hello_service running in ubus waiting to be called. Verify if it is listed in ubus by doing the following command:
 
-    sudo ./Scripts/ubus list
+    sudo ./Scripts/ubus -s my_own_socket.sock list
 
 ### 7. Trigger hello from ubus.
     
-    sudo ./Scripts/ubus call hello say
+    sudo ./Scripts/ubus call hello say -s my_own_socket.sock
 
 <br>
 
-<a name="structure-of-service-code-in-ubus"></a>
-## 🛠️ Structure of Service Code in UBUS
+<a name="service-code-c-structure-in-ubus"></a>
+## 🛠️ Service Code C Structure in UBUS
 
 Your service code is what we would like to register in the ubus daemon. To create one, your code should contain the following:
 

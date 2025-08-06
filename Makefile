@@ -4,7 +4,7 @@ SRC_DIR   := $(TOP_DIR)/Source
 SCR_DIR   := $(TOP_DIR)/Scripts
 
 UBUSD_BIN := ubusd
-HELLO_SRV_BIN := hello_service
+HELLO_SRV_BIN := hello-service
 
 .PHONY: all build-packages build-ubus-service clean
 
