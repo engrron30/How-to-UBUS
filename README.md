@@ -132,7 +132,7 @@ The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ dir
     
     sudo ./ubusd -s "my_own_socket.sock" &
 
-__[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
+__[ALTERNATIVE]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
 ### 6. Register hello service in ubus.
 
