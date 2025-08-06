@@ -130,7 +130,7 @@ To remove the compiled file, just do:
 
 The compiled _ubusd_, _ubus_ and _hello_service_ are copied to the _Scripts_ directory if build is successful. Go to this directory and run the following:
     
-    sudo ./Scripts/ubusd -s "ubus.sock" &
+    sudo ./ubusd -s "my_own_socket.sock" &
 
 __[RECOMMENDED]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
 
