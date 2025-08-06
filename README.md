@@ -57,7 +57,6 @@ A simple hello service in C could be the following:
 
     static struct ubus_context *ctx;
 
-    // Handler for the "say" method
     static int hello_handler(struct ubus_context *ctx, struct ubus_object *obj,
                              struct ubus_request_data *req, const char *method,
                              struct blob_attr *msg) {
