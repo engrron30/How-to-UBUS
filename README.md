@@ -138,6 +138,8 @@ Register the hello service and its object and method in ubus by running the foll
     
     sudo ./Scripts/hello-service -s my_own_socket.sock &
 
+if this command failed to run hello-service, export the ubox shared object. See the export command in *Scripts/04_run-hello-service.sh*. You can just simply run this shell script if encountered difficulties in executing hello-service.
+
 If hello service is successfully registered in ubus, you should see your hello_service running in ubus waiting to be called. Verify if it is listed in ubus by doing the following command:
 
     sudo ./Scripts/ubus -s my_own_socket.sock list
