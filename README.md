@@ -13,8 +13,7 @@ This repository aims to run and test UBUSD using Ubuntu Linux. ubus is typically
     - [Run ubusd](#5-run-ubusd)
     - [Register hello service in ubus](#6-register-hello-service-in-ubus)
     - [Trigger hello from ubus](#7-trigger-hello-from-ubus)
-
-- [🛠️ Structure of Service Code in UBUS](#structure-of-service-code-in-ubus)
+- [🛠️ Structure of Service Code in UBUS](#service-code-c-structure-in-ubus)
 
 <br>
 
@@ -149,8 +148,8 @@ If hello service is successfully registered in ubus, you should see your hello_s
 
 <br>
 
-<a name="structure-of-service-code-in-ubus"></a>
-## 🛠️ Structure of Service Code in UBUS
+<a name="service-code-c-structure-in-ubus"></a>
+## 🛠️ Service Code C Structure in UBUS
 
 Your service code is what we would like to register in the ubus daemon. To create one, your code should contain the following:
 
