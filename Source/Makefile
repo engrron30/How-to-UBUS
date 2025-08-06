@@ -25,7 +25,7 @@ LDFLAGS := \
   -L$(UBUS_BUILD) -lubus -lrt
 
 # Source files and target
-TARGET := $(OUTPUT_DIR)/hello_service
+TARGET := $(OUTPUT_DIR)/hello-service
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 OBJS := $(SRCS:$(SRC_DIR)/%.c=%.o)
 
