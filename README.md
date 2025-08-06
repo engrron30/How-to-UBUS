@@ -131,21 +131,21 @@ The compiled _ubusd_, _ubus_ and _hello-service_ are copied to the _Scripts_ dir
     
     sudo ./ubusd -s "my_own_socket.sock" &
 
-__[ALTERNATIVE]__ Or simply run the _03_run-ubusd.sh_ in Scripts folder.
+__[ALTERNATIVE]__ Or simply run the *03_run-ubusd.sh* in Scripts folder.
 
 ### 6. Register hello service in ubus.
 
 Register the hello service and its object and method in ubus by running the following service code:
     
-    sudo ./Scripts/hello_service &
+    sudo ./Scripts/hello-service -s my_own_socket.sock &
 
 If hello service is successfully registered in ubus, you should see your hello_service running in ubus waiting to be called. Verify if it is listed in ubus by doing the following command:
 
-    sudo ./Scripts/ubus list
+    sudo ./Scripts/ubus -s my_own_socket.sock list
 
 ### 7. Trigger hello from ubus.
     
-    sudo ./Scripts/ubus call hello say
+    sudo ./Scripts/ubus call hello say -s my_own_socket.sock
 
 <br>
 
