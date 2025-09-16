@@ -41,11 +41,11 @@ static struct ubus_object hello_object = {
 int main() {
     char *socket_path = find_socket_file();
     if (socket_path) {
-	printf("Socket found: %s\n", socket_path);
-	ctx = ubus_connect(socket_path);
+		printf("Socket found: %s\n", socket_path);
+		ctx = ubus_connect(socket_path);
     } else {
-	printf("Connecting to default socket!\n");
-	ubus_connect(NULL);
+		printf("Connecting to default socket!\n");
+		ubus_connect(NULL);
     }
 
     if (!ctx) {
