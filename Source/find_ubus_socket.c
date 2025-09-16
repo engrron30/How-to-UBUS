@@ -37,14 +37,15 @@ char *find_socket_file()
             continue;
 
         if (S_ISSOCK(st.st_mode)) {
-	    char abs_dir[PATH_MAX];
-	    if (!realpath(fullpath, abs_dir)) {
-		perror("realpath failed!");
-		goto exit;
-	    }
+	    	char abs_dir[PATH_MAX];
+			
+	    	if (!realpath(fullpath, abs_dir)) {
+				perror("realpath failed!");
+				goto exit;
+	    	}
 
-	    /* Socket is found! */
-	    ubus_socket_path = strdup(abs_dir);
+	    	/* Socket is found! */
+	    	ubus_socket_path = strdup(abs_dir);
             goto exit;
         }
     }
